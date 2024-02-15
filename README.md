@@ -1,4 +1,4 @@
-# Ole Miss Java Files
+# Ole Miss Code Repository
 Currently studying at the University of Mississippi, and I will be uploading all of my 
 code into this repository
 
