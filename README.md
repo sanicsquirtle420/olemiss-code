@@ -1,2 +1,6 @@
 # Ole Miss Java Files
-Currently learning Java at the University of Mississippi, so I am going to be uploading my code to this repository. 
+Currently studying at the University of Mississippi, and I will be uploading all of my 
+code into this repository
+
+## Table of Contents
+[/111](https://github.com/sanicsquirtle420/olemiss-java/tree/main/111) - Computer Science I
