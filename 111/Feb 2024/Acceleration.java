@@ -1,3 +1,6 @@
+/*
+02/12/2024
+*/
 import java.util.Scanner ; 
 
 public class Acceleration {
