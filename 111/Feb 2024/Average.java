@@ -1,4 +1,5 @@
 /* 
+02/07/2024
 Notes:
 printf = print with a format
 '%.2f' is used to ensure there is only 2 decimal places after the double
