@@ -1,4 +1,5 @@
 /*
+02/12/2024
 Notes:
 This is the same program as olemiss-java/111/Average.java 
 except it is using JOptionPane's dialog boxes. 
