@@ -11,7 +11,7 @@ public class SoundSpeed {
 		int medium ; // declare variables for the inputs and output
 		
 		Scanner input = new Scanner(System.in) ; // prompt for inputs
-		System.out.print("Enter the medium (1 for air, 2 for water, and 3 for steel: ") ; 
+		System.out.print("Enter the medium (1 for air, 2 for water, and 3 for steel): ") ; 
 		medium = input.nextInt() ; 
 		
 		if (medium <= 0 || medium >= 4)  // process
