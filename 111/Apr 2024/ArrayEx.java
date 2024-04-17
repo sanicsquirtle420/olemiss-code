@@ -1,4 +1,4 @@
-import java.util.Random ; // 04/16/24
+import java.util.Random ; // 04/17/24
 
 public class ArrayEx {
 	public static void main(String [] args) {
@@ -15,10 +15,7 @@ public class ArrayEx {
 			System.out.print(value + " ") ;
 		}
 		
-		int sum = 0 ;
-		for (int i = 0 ; i < intArray.length ; i++) // the sum of the array
-			sum += intArray[i] ;
-		
+		int sum = sumUp(intArray) ; // calling sumUp method
 		System.out.printf("\nThe sum is %d." , sum) ;
 		
 		int max = intArray[0] , min = intArray[0] ;
@@ -38,5 +35,13 @@ public class ArrayEx {
 		
 		System.out.printf("\nThe max is %d and the index is %d" , max , maxIndex) ;
 		System.out.printf("\nThe minimum is %d and the index is %d" , min, minIndex) ;
+	}
+	
+	public static int sumUp(int[] myArray) {
+		int s = 0 ; // sumUp method that calculates the sum of the array
+		for (int i = 0 ; i < myArray.length ; i++) 
+			s += myArray[i] ;
+			
+		return s ;
 	}
 }
