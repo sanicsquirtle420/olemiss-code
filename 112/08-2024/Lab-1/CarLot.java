@@ -1,3 +1,7 @@
+/*
+08/28/2024
+An example of an intermediate object class.
+*/
 public class CarLot {
     private String lotName ;
     private Vehicle[] lot ;
