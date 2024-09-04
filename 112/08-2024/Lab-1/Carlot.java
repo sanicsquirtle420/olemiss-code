@@ -2,17 +2,17 @@
 08/28/2024
 An example of an intermediate object class.
 */
-public class CarLot {
+public class Carlot {
     private String lotName ;
     private Vehicle[] lot ;
     private int counter ;
 
-    public CarLot() {
+    public Carlot() {
         lotName = "" ;
         lot = new Vehicle[100] ;
         counter = 0 ;
     }
-    public CarLot(String name) {
+    public Carlot(String name) {
         lotName = name ;
         lot = new Vehicle[100] ;
         counter = 0 ;
@@ -35,6 +35,10 @@ public class CarLot {
             total += lot[i].getCost() ;
         }
         return total / counter ;
+    }
+
+    public int getLogicalLength() {
+        return counter ; // ADDED: 09/04/2024
     }
 
     public void printLotInfo() {
