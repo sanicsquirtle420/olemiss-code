@@ -7,7 +7,7 @@ public class Vehicle {
     private double cost ;
 
     public Vehicle() {
-        color = ""
+        color = "" ;
         make = "" ;
         model = "" ;
         cost = 0.0 ;
