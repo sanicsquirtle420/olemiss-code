@@ -12,12 +12,12 @@ class MembersTest {
 
     @Test
     void ParamConst() {
-        Members test = new Members("Diego" , "12345" , "Soph" , "Flowood, MS") ;
+        Members test = new Members("Diego" , "12345" , "Soph" , "MS") ;
         assertAll("testing parameterized constructor..." ,
                 () -> assertEquals("Diego" , test.getName()) ,
                 () -> assertEquals("12345" , test.getID()) ,
                 () -> assertEquals("Soph" , test.getClassification()) ,
-                () -> assertEquals("Flowood, MS" , test.getHometown())
+                () -> assertEquals("MS" , test.getHometown())
         ) ;
     }
 
@@ -48,14 +48,14 @@ class MembersTest {
     @org.junit.jupiter.api.Test
     void setHometown() {
         Members test = new Members() ;
-        test.setHometown("Brandon, MS");
+        test.setHometown("TX");
 
-        assertEquals("Brandon, MS" , test.getHometown());
+        assertEquals("TX" , test.getHometown());
     }
 
     @org.junit.jupiter.api.Test
     void testToString() {
-        Members test = new Members("Jake" , "23456" , "Soph" , "Brandon, MS") ;
+        Members test = new Members("Jake" , "23456" , "Soph" , "TX") ;
 
         assertEquals(String.format("%16s, ID Number: %s, is a %9s from %s: ", test.getName(), test.getID(), test.getClassification(), test.getHometown()) , test.toString()) ;
     }
