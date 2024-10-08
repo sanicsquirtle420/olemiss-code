@@ -63,6 +63,7 @@ public class StringMethods {
             String[] tokens = line.trim().split(" - ") ;
 
             System.out.print("1st Value: " + tokens[0]) ;
+	    System.out.print("2nd Value: " + tokens[1]) ;
             System.out.print("\t Length: " + tokens.length) ;
             System.out.print("\t Last Value: " + tokens[tokens.length - 1] + "\n") ;
         }
