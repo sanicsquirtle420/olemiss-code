@@ -1,3 +1,5 @@
+pacakge edu.olemiss.week07 ;
+
 import java.io.* ;
 import java.util.Scanner ;
 public class StringMethods {
