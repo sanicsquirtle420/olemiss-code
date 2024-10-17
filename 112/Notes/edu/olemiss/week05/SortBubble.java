@@ -22,7 +22,12 @@ public class SortBubble {
 
     public void printArray() {
         for(int i = 0 ; i < numbers.length ; i++) {
-            System.out.printf("%d: %d\n" , i , numbers[i]) ;
+            if((i + 1) % 6 == 0) {
+                System.out.printf("%d: %d\n", i, numbers[i]);
+            }
+            else {
+                System.out.printf("%d: %d\t" , i , numbers[i]) ;
+            }
         }
     }
 
