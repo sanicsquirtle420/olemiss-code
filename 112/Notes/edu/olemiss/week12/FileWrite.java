@@ -1,13 +1,17 @@
-package edu.olemiss.week12 ;
+package edu.olemiss.week12;
 
-import java.io.* ; // fight me for using * 
+import java.io.* ;
 import java.util.Scanner ;
 
 public class FileWrite {
     public static void main(String[] args) throws IOException {
-        PrintWriter pw = new PrintWriter("data.txt") ;
-        pw.println("On a new line !") ;
         Scanner scan = new Scanner(System.in) ;
+        System.out.print("Enter a file name: ") ;
+        String name = scan.nextLine() ;
+
+        PrintWriter pw = new PrintWriter(name + ".txt") ;
+        pw.println("On a new line !") ;
+
 
         System.out.print("Text: ") ;
         String str = scan.nextLine() ;
@@ -16,6 +20,6 @@ public class FileWrite {
 
         pw.close() ;
 
-        System.out.println("Text was written to data.txt") ;
+        System.out.printf("Text was written to %s.txt" , name) ;
     }
 }
