@@ -6,7 +6,7 @@ print()
 # split name and display initials
 print("Your initials:" , end = " ")
 for i in range(len(name)):
-    print(name[i][0] , end = "")
+    print(name[i][0].upper() , end = "")
 # Note: [index of words][character at string]
 print()
 
