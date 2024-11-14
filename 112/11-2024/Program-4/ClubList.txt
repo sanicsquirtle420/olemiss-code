@@ -1,0 +1,21 @@
+Overwatch,OW
+Kiriko,Japan,306,60
+Juno,Mars,305,42
+Widowmaker,France,218,45
+Mei,China,208,21
+Venture,Canada,217,35
+Hana Song, South Korea,101,54
+Zenyatta,Nepal,311,99
+Nakano Sisters,TQQ
+Ichika,Japan,501,30
+Nino,Japan,502,25
+Miku,Japan,503,15
+Yotsuba,Japan,504,75
+Itsuki,Japan,505,20
+The Big Bang Theory,TBBT
+Raj,India,403,32
+Leonard,United States,402,10
+Amy,United States,406,20
+Howard,United States,404,30
+Penny,United States,405,65
+Sheldon,United States,401,25
