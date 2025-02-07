@@ -55,7 +55,7 @@ int main(void) {
         else if(exp == "LOGICAL OR") {
             num2 = getHex("second") ;
             str2 = hexStr(num2) ;
-            ans == (num1 || num2) ;
+            ans = (num1 || num2) ;
             cout << "Logical OR of (" << str1 << " || " << str2 << "): " << ans << endl ;
         }
         else if(exp == "EXIT") {
