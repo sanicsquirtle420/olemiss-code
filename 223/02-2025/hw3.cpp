@@ -5,20 +5,16 @@
 
 using namespace std ;
 
-int secondHex() ;
+int getHex(string iter) ;
+string hexStr(int val) ;
 
 int main(void) {
     string exp = "" ;
 
     do {
-        int num1 = 0 , num2 = 0 , ans = 0;
-        string str1 = "" ;
-        cout << "Enter first hex number (ex. 0x44): " ;
-
-        // converting string -> hex -> dec (int)
-        cin >> str1 ;
-        stringstream ss(str1) ;
-        ss >> hex >> num1 ;
+        int num1 = getHex("first") ;
+        int num2 = 0 , ans = 0;
+        string str1 = hexStr(num1) , str2 = ""  , ansStr = "" ;
         
         // clears buffer
         cin.ignore(100, '\n') ;
@@ -35,28 +31,32 @@ int main(void) {
             cout << "Bitwise NOT of " << str1 << ": 0x" <<  hex << num1 << endl ;
         }
         else if(exp == "AND") {
-            num2 = secondHex() ;
+            num2 = getHex("second") ;
+            str2 = hexStr(num2) ;
             ans = num1 & num2 ;
-            cout << "Bitwise AND of (" << str1 << " & " << "0x" << hex << num2 << "): 0x" << hex << ans << endl ;
+            cout << "Bitwise AND of (" << str1 << " & " << str2 << "): 0x" << hex << ans << endl ;
         }
         else if(exp == "OR"){
-            num2 = secondHex() ;
+            num2 = getHex("second") ;
+            str2 = hexStr(num2) ;
             ans = num1 | num2 ;
-            cout << "Bitwise OR of (" << str1 << " | " << "0x" << hex << num2 << "): 0x" << hex << ans << endl ;
+            cout << "Bitwise OR of (" << str1 << " | " << str2 << "): 0x" << hex << ans << endl ;
         }
         else if(exp == "LOGICAL NOT") {
             num1 = !(num1) ;
             cout << "Logical NOT of " << str1 << ": " << ans << endl ;
         }
         else if(exp == "LOGICAL AND") {
-            num2 = secondHex() ;
+            num2 = getHex("second") ;
+            str2 = hexStr(num2) ;
             ans = (num1 && num2) ;
-            cout << "Logical AND of (" << str1 << " && 0x" << hex << num2 << "): " << ans << endl ;
+            cout << "Logical AND of (" << str1 << " && " << str2 << "): " << ans << endl ;
         }
         else if(exp == "LOGICAL OR") {
-            num2 = secondHex() ;
+            num2 = getHex("second") ;
+            str2 = hexStr(num2) ;
             ans == (num1 || num2) ;
-            cout << "Logical OR of (" << str1 << " || 0x" << hex << num2 << "): " << ans << endl ;
+            cout << "Logical OR of (" << str1 << " || " << str2 << "): " << ans << endl ;
         }
         else if(exp == "EXIT") {
             cout << "Goodbye!" << endl ;
@@ -71,13 +71,20 @@ int main(void) {
     return 0 ;
 }
 
-int secondHex() {
+int getHex(string iter) {
     string tmpS ;
     int tmpI ;
-    cout << "Enter second hex number: " ;
+    cout << "Enter the " << iter << " hex number (ex. 0x44): " ;
     cin >> tmpS ;
     stringstream ss(tmpS) ;
     ss >> hex >> tmpI ;
 
     return tmpI ;
+}
+
+string hexStr(int val) {
+    stringstream ss ;
+    ss << hex << val ;
+    string tmp = ss.str() ;
+    return "0x" + tmp ;
 }
