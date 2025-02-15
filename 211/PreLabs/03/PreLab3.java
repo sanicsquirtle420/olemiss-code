@@ -16,12 +16,19 @@ public class PreLab3 {
 
     @Override
     public String toString() {
-        String msg = "";
+        String msg = "" ;
+        Stack<Marble> tmp = new Stack<>() ;
+
         if(marbleStack.isEmpty()) {
             return "" ;
         }
-        for(int i = marbleStack.size() - 1 ; i > 0 ; i--) {
-            msg += marbleStack.get(i).toString() + "\n" ;
+        while(!marbleStack.isEmpty()) {
+            tmp.add(marbleStack.pop()) ;
+        }
+
+        while(!tmp.isEmpty()) {
+            msg += tmp.peek().toString() + "\n" ;
+            marbleStack.add(tmp.pop()) ;
         }
         return msg ;
     }
