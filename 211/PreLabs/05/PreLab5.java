@@ -11,13 +11,8 @@ public class PreLab5 {
     public PreLab5(String filename) throws FileNotFoundException {
         scan = new Scanner (new File(filename)) ;
         numToSort = new ArrayList<>() ;
-    }
 
-    public ArrayList<String> getArray() {
-        return numToSort ;
-    }
-
-    public void getValues() {
+        // could be its own method
         while(scan.hasNext()) {
             String[] s = scan.nextLine().split(",") ;
             for(int i = 0 ; i < s.length ; i++) {
@@ -30,38 +25,39 @@ public class PreLab5 {
         }
     }
 
-    // TODO: fix these awful radix sort methods
+    // thank fuck this shit works, and i hate this sorting method some much
     public void radixSort() {
-        int max = 8 ;
+        int max = numToSort.getFirst().length() ;
 
         for(int pos = max - 1 ; pos >= 0 ; pos--) {
-            countSort(pos , max) ;
+            countSort(pos) ;
         }
     }
 
-    // max variable isn't being used
-    private void countSort(int position , int max) {
-        ArrayList<String> output = new ArrayList<>(Collections.nCopies(numToSort.size() , "")) ;
-        ArrayList<Integer> count = new ArrayList<>(Collections.nCopies(256 , 0)) ;
+    public void countSort(int position) {
+        int n = numToSort.size() ;
+        ArrayList<String> result = new ArrayList<>(Collections.nCopies(n , "")) ;
+        int[] c = new int[10] ;
 
         for(String str : numToSort) {
-            char ch = str.charAt(position) ;
-            count.set(ch , count.get(ch + 1)) ;
+            int digit = str.charAt(position) - '0' ;
+            c[digit]++ ;
         }
 
-        for(int i = 1 ; i < 256 ; i++) {
-            count.set(i , count.get(i) + count.get(i - 1)) ;
+        for(int i = 1 ; i < 10 ; i++) {
+            c[i] += c[i - 1] ;
         }
 
-        for(int i = numToSort.size() - 1 ; i >= 0 ; i--) {
-            char ch = numToSort.get(i).charAt(position) ;
-            int j = count.get(ch) - 1 ;
-            output.set(j , numToSort.get(i)) ;
-            count.set(ch , count.get(ch) - 1) ;
+        for(int i = n - 1 ; i >= 0 ; i--) {
+            // fuck you piece of shit >= because you ruined everything
+            String num = numToSort.get(i) ;
+            int digit = num.charAt(position) - '0' ;
+            result.set(c[digit] - 1, num) ;
+            c[digit]-- ;
         }
 
-        for(int i = 0 ; i < numToSort.size() ; i++) {
-            numToSort.set(i , output.get(i)) ;
+        for(int i = 0 ; i < n ; i++) {
+            numToSort.set(i , result.get(i)) ;
         }
     }
 
