@@ -48,13 +48,43 @@ public class PreLab8 {
     }
 
     private void getMorseCodes(ArrayList<String> mCode, BinaryTreeNode<String> node, String prefix) {
-      // TODO
+        if(node != null) {
+              getMorseCodes(mCode , node.getLeft(), ".") ;
+              String ch = "" ;
+              for(MorseCode mc : list) {
+                  if(mc.getCode().equals(node.getElement())) {
+                      ch = mc.getCh() ;
+                  }
+              }
+              if(!node.getElement().equals(" ")) {
+                  mCode.add(ch + " " + node.getElement());
+              }
+              getMorseCodes(mCode , node.getRight() , "-") ;
+          }
       }
 
   public String transmit(String str) throws InvalidMorseCodeException {
-    String msg = "" ;
-    return msg ;
-    // TODO
+    String msg = "";
+          ArrayList<String> mCodes = getMorseCodes() ;
+          if(str.isEmpty()) {
+              throw new InvalidMorseCodeException() ;
+          }
+          str = str.trim() ;
+          String[] juno = str.split(" ") ;
+          for(String j : juno){
+              for(String mc : mCodes) {
+                  String[] val = {} ;
+                  if(!mc.equals(" ")) {
+                      val = mc.split(" ") ;
+                  }
+                  if(val.length == 2) {
+                      if (j.equals(val[1])) {
+                          msg += val[0];
+                      }
+                  }
+              }
+          }
+          return msg ;
     }
 
     public String translate(String morseCode) throws InvalidMorseCodeException {
