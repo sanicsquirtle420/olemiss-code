@@ -32,8 +32,11 @@ public class Rectangle {
     public String rectangleHash() {
         String tmp = this + ".password" ;
         byte[] hashArr = Base64.getEncoder().encode(tmp.getBytes()) ;
-        tmp = new String(hashArr) ;
+        return new String(hashArr) ;
+    }
 
-        return tmp ;
+    public String hashDecode(String decode) {
+        byte[] hash = Base64.getDecoder().decode(decode) ;
+        return new String(hash) ;
     }
 }
