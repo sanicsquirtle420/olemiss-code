@@ -19,21 +19,27 @@ public class Prelab12 {
             }
         }
 
+        long start = System.nanoTime() ;
         double[] susan = modify(Arrays.copyOf(luna, luna.length)) ;
+        long stop = System.nanoTime() ;
+        long susanTime = stop - start ;
         double[][] juno = new double[kiriko.length][kiriko[0].length] ;
 
+        start = System.nanoTime() ;
         for(int i = 0 ; i < juno.length ; i++) {
             juno[i] = modify(Arrays.copyOf(kiriko[i], kiriko[i].length)) ;
         }
+        stop = System.nanoTime() ;
+        long junoTime = stop - start ;
 
         System.out.println("*** ORIGINAL ***\nLuna:") ;
         printArray(luna) ;
         System.out.println("\nKiriko:") ;
         printArray(kiriko) ;
 
-        System.out.println("\n*** ALTERED ***\nSusan:") ;
+        System.out.println("\n*** ALTERED ***\nSusan (Time: " + susanTime + "ns)") ;
         printArray(susan) ;
-        System.out.println("\nJuno:") ;
+        System.out.println("\nJuno (Time: " + junoTime + "ns)") ;
         printArray(juno) ;
 
         System.out.println("\n*** AVERAGES ***\nKiriko:") ;
