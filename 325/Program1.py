@@ -1,3 +1,4 @@
+import math
 alphabet: list[str] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
 def main():
@@ -27,10 +28,6 @@ def main():
             run = False
 
 def keyword(key: str, plaintext: str) -> str:
-    print("Select:")
-    print("1. Encrypt")
-    print("2. Decrypt")
-    choice: int = int(input("-> "))
     ans: str = ""
     a = alphabet.copy()
 
@@ -39,14 +36,14 @@ def keyword(key: str, plaintext: str) -> str:
             a.remove(key[i].upper())
             a.insert(0, key[i].upper())
 
-    if choice == 1:
+    if enc_dec():
         for j in range(len(plaintext)):
             if plaintext[j].upper() in alphabet:
                 index: int = alphabet.index(plaintext[j].upper())
-                ans = ans + a[index]
+                ans += a[index]
             else:
-                ans = ans + plaintext[j]
-    elif choice == 2:
+                ans += plaintext[j]
+    else:
         for j in range(len(plaintext)):
             if plaintext[j].upper() in a:
                 index: int = a.index(plaintext[j].upper())
@@ -54,40 +51,65 @@ def keyword(key: str, plaintext: str) -> str:
             else:
                 ans = ans + plaintext[j]
 
-    tmp = list(ans)
-    for k in range(len(plaintext)): # the stupidest way to keep the same case
-        if plaintext[k].islower():
-            tmp[k] = tmp[k].lower()
-
-    return "".join(tmp)
+    return ret_case(ans, plaintext)
 
 def columnar(key: str, plaintext: str) -> str:
-    print("Select:")
-    print("1. Encrypt")
-    print("2. Decrypt")
-    choice: int = int(input("-> "))
     ans: str = ""
+    r: int = math.ceil(len(plaintext) / len(key))
+    arr: list[list[str]] = [[" " for _ in range(len(key))] for _ in range(r)]
 
-    if choice == 1:
-        print("ENCRYPTING")
-    elif choice == 2:
+    if enc_dec():
+        for row in range(len(arr)):
+            for col in range(len(arr[row])):
+                index: int = row * len(key) + col
+                if index < len(plaintext):
+                    arr[row][col] = plaintext[index]
+                else:
+                    arr[row][col] = " "
+    else:
         print("DECRYPTING")
 
+    for col in range(len(arr[0])):
+        for row in range(len(arr)):
+            ans += arr[row][col]
+    # for row in arr:
+    #     for col in range(len(row)):
+    #         print(row[col], end="")
+    #     print()
     return ans
 
 def vigenere(key: str, plaintext: str) -> str:
-    print("Select:")
-    print("1. Encrypt")
-    print("2. Decrypt")
-    choice: int = int(input("-> "))
     ans: str = ""
+    key = key.upper()
 
-    if choice == 1:
-        print("ENCRYPTING")
-    elif choice == 2:
-        print("DECRYPTING")
+    if enc_dec():
+        for j in range(len(plaintext)):
+            if plaintext[j].upper() in alphabet:
+                index: int = (ord(plaintext[j].upper()) + ord(key[j % len(key)])) % 26
+                ans += alphabet[index].upper()
+            else:
+                ans += plaintext[j]
+    else:
+        for j in range(len(plaintext)):
+            if plaintext[j].upper() in alphabet:
+                index: int = (ord(plaintext[j].upper()) - ord(key[j % len(key)])) % 26
+                ans += alphabet[index].upper()
+            else:
+                ans += plaintext[j]
 
-    return ans
+    return ret_case(ans, plaintext)
+
+def ret_case(cap_str: str, reg_str) -> str:
+    tmp = list(cap_str)
+    for i in range(len(reg_str)):
+        if reg_str[i].islower():
+            tmp[i] = tmp[i].lower()
+    return "".join(tmp)
+
+def enc_dec() -> bool:
+    print("Select:\n1. Encrypt\n2. Decrypt")
+    choice: int = int(input("-> "))
+    return choice == 1
 
 if __name__ == "__main__":
     main()
